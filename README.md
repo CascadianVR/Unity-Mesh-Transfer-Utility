@@ -9,3 +9,8 @@
 
 3. After that, drag in the skinned mesh you want to work with the same armature above.
 4. Press the "Remap Bones" Button and that's it!
+
+###Download:
+To download, go to the releases and download the .cs file and add it to your Unity project.
+
+https://github.com/CascadianWorks/Skinned-Mesh-Armature-Remapper/releases
