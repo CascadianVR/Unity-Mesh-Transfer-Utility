@@ -14,7 +14,7 @@
 
 *(In this case, the skirt is being remapped to match the armature the body is attached to)*
 
-5. Press the "Remap Bones" Button and that's it!
+4. Press the "Remap Bones" Button and that's it!
 
 ### Download:
 To download, go to the releases and download the .cs file and add it to your Unity project.
