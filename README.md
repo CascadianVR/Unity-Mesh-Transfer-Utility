@@ -4,17 +4,27 @@
 ### HOW TO USE:
 1. You can access the editor window by toing to the top toolbar and going to Tools/Cascadian/Skinned-Mesh-Armature-Remapper.
 
-2. Drag in any skinned mesh renderer from the armature you want to use in the first slot.
+![image](https://user-images.githubusercontent.com/90723146/138570521-a9e0e431-d6f8-456c-a9e0-1439e369c71d.png)
 
-![Screenshot_2021-09-14_11-48-56](https://user-images.githubusercontent.com/90723146/133324220-9094bb3b-dc59-4033-9f4f-5f38c2f0c9e6.png)
+2. Drag in any skinned mesh renderer (Body mesh usually) from the base armature you want to use in the first slot. Make sure the Base armature is humanoid. The other mesh armatures do not need to be.
 
-3. After that, drag in the skinned mesh you want to work with the same armature above.
+![image](https://user-images.githubusercontent.com/90723146/138570540-46d97e76-2f1f-485a-bdb8-c6738298bacb.png)
 
-![Screenshot_2021-09-14_12-16-25](https://user-images.githubusercontent.com/90723146/133327729-0118ef81-246f-47f8-93dd-3f264d6a020e.png)
+3. After that, drag in the skinned meshes you want to bind to the base armature.
 
-*(In this case, the skirt is being remapped to match the armature the body is attached to)*
+![image](https://user-images.githubusercontent.com/90723146/138570556-e541b9b6-cc01-4f53-a383-1a4bb899e21d.png)
+
+*(In this case, the Shoes and Skirt are being remapped to match the armature the body is attached to)*
 
 4. Press the "Remap Bones" Button and that's it!
+
+BEFORE:
+
+![image](https://user-images.githubusercontent.com/90723146/138570569-d66afa7d-7e5e-48ef-b035-261811935743.png)
+
+AFTER:
+
+![image](https://user-images.githubusercontent.com/90723146/138570575-f82bccfa-2a1b-4766-8208-2723c2c29663.png)
 
 ### Download:
 To download, go to the releases and download the .cs file and add it to your Unity project.
