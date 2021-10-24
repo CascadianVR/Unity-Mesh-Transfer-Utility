@@ -21,7 +21,7 @@ This does not automatically weight anything, it just lets you use a mesh on a sp
 
 *(In this case, the Shoes and Skirt are being remapped to match the armature the body is attached to)*
 
-4. Press the "Remap Bones" Button and that's it!
+4. Press the "Remap Bones" Button and that's it! You can delete the old empty armatures from the scene now.
 
 BEFORE:
 
