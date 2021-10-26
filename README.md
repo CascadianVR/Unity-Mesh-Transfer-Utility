@@ -11,7 +11,7 @@ This does not automatically weight anything, it just lets you use a mesh on a sp
 
 ![image](https://user-images.githubusercontent.com/90723146/138570521-a9e0e431-d6f8-456c-a9e0-1439e369c71d.png)
 
-**2. Drag in any skinned mesh renderer (Body mesh usually) from the base armature you want to use in the first slot. Make sure the Base armature is humanoid. The other mesh armatures do not need to be.**
+**2. Drag in any skinned mesh renderer (Body mesh usually) from the base armature you want to use in the first slot. ***Make sure the Base armature is humanoid. The other mesh armatures do not need to be.***
 
 ![image](https://user-images.githubusercontent.com/90723146/138570540-46d97e76-2f1f-485a-bdb8-c6738298bacb.png)
 
@@ -21,7 +21,7 @@ This does not automatically weight anything, it just lets you use a mesh on a sp
 
 *(In this case, the Shoes and Skirt are being remapped to match the armature the body is attached to)*
 
-**4. Press the "Remap Bones" Button and that's it! You can delete the old empty armatures from the scene now.**
+**4. Press the "Remap Bones" Button and that's it! You can delete the old empty armatures from the scene now. ***Only bones with the SAME NAME will be remapped. Any new bones will be ignored.***
 
 **BEFORE:**
 
