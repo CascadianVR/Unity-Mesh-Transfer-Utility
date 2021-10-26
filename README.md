@@ -2,6 +2,13 @@
 **A Unity Editor utility that can transfer skinned mesh renderers from one armature to another. 
 This does not automatically weight anything, it just lets you use a mesh on a specified armature instead of only the one it was imported with.**
 
+***Some uses for this tool include:***
+- Adding meshes to an existing configured model
+- Replacing meshes to update instead of reimporting
+- Refreshing every mesh on the bodel while maintinging original armature
+
+*(And more)*
+
 ### Video Tutorial:
 
 [![https://www.youtube.com/watch?v=N2BVAn7m2y4](https://img.youtube.com/vi/N2BVAn7m2y4/0.jpg)](https://www.youtube.com/watch?v=N2BVAn7m2y4)
