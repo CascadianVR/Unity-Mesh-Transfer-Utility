@@ -5,7 +5,7 @@ This does not automatically weight anything, it just lets you use a mesh on a sp
 ***Some uses for this tool include:***
 - Adding meshes to an existing configured model
 - Replacing meshes to update instead of reimporting
-- Refreshing every mesh on the bodel while maintinging original armature
+- Refreshing every mesh on the model while maintinging original armature
 
 *(And more)*
 
