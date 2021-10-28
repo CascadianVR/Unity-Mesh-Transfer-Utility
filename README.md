@@ -9,11 +9,15 @@ This does not automatically weight anything, it just lets you use a mesh on a sp
 
 *(And more)*
 
-# Video Tutorial:
+# Videos
+### Example:
+https://user-images.githubusercontent.com/90723146/139330629-c4a3f25f-565b-4424-8895-b95f454c1310.mp4
 
-[![https://www.youtube.com/watch?v=N2BVAn7m2y4](https://img.youtube.com/vi/N2BVAn7m2y4/0.jpg)](https://www.youtube.com/watch?v=N2BVAn7m2y4)
 
-# HOW TO USE:
+### Youtube Walkthrough Tutorial:
+https://img.youtube.com/vi/N2BVAn7m2y4/0.jpg)](https://www.youtube.com/watch?v=N2BVAn7m2y4)
+
+# How to Use
 **1. You can access the editor window by toing to the top toolbar and going to Tools/Cascadian/Skinned-Mesh-Armature-Remapper.**
 
 ![image](https://user-images.githubusercontent.com/90723146/138570521-a9e0e431-d6f8-456c-a9e0-1439e369c71d.png)
@@ -38,7 +42,7 @@ This does not automatically weight anything, it just lets you use a mesh on a sp
 
 ![image](https://user-images.githubusercontent.com/90723146/138570575-f82bccfa-2a1b-4766-8208-2723c2c29663.png)
 
-# **Download**:
+# **Download**
 To download, go to the releases and download the .cs file and add it to your Unity project.
 
 https://github.com/CascadianWorks/Skinned-Mesh-Armature-Remapper/releases
