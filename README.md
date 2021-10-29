@@ -46,3 +46,8 @@ https://img.youtube.com/vi/N2BVAn7m2y4/0.jpg)](https://www.youtube.com/watch?v=N
 To download, go to the releases and download the .cs file and add it to your Unity project.
 
 https://github.com/CascadianWorks/Skinned-Mesh-Armature-Remapper/releases
+
+# **Issues/Improvements to Be Done**
+- Take default humanoid bone names into account (So even if one is named Shoulder_L and other is LeftShoulder, it will still map)
+- Maybe add missing bones to target armature?? (Maybe Possible)
+
