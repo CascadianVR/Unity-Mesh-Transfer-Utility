@@ -1,5 +1,6 @@
-# Skinned-Mesh-Armature-Remapper
-**A Unity Editor utility that can transfer skinned mesh renderers from one armature to another. 
+# Skinned-Mesh-Armature-Remapper 
+
+**A Unity Editor utility that can transfer skinned mesh renderers from one armature to another.  
 This does not automatically weight anything, it just lets you use a mesh on a specified armature instead of only the one it was imported with.**
 
 ***Some uses for this tool include:***
@@ -7,7 +8,7 @@ This does not automatically weight anything, it just lets you use a mesh on a sp
 - Replacing meshes to update instead of reimporting
 - Refreshing every mesh on the model while maintinging original armature
 
-*(And more)*
+*(And more)* <p align="right">[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N06S00V)</p>
 
 # Videos
 ### Example:
