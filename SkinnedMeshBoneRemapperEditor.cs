@@ -28,6 +28,7 @@ class SkinnedMeshBoneRemapperEditor : EditorWindow
     void GetBones(Transform pBone)
     {
         foreach (Transform bone in pBone){
+            if (bone.name.Equals("Armature")) { continue; } // skip sub-avatar in main avatar
             boneMap[bone.gameObject.name] = bone;
             GetBones(bone);
         }
@@ -39,7 +40,9 @@ class SkinnedMeshBoneRemapperEditor : EditorWindow
         Transform[] newBonesList = new Transform[Mesh.bones.Length];
         for (int j = 0; j < Mesh.bones.Length; ++j)
         {
-            GameObject bone = Mesh.bones[j].gameObject;
+            Transform tempBone = Mesh.bones[j];
+            if (tempBone == null) { continue; }
+            GameObject bone = tempBone.gameObject;
             if (!boneMap.TryGetValue(bone.name, out newBonesList[j]))
             {
                 if (boneMap.TryGetValue(bone.transform.parent.name, out Transform pBone))// try to find the parent reference in the target armature
