@@ -9,9 +9,11 @@ class MeshTransferToolEditor : EditorWindow
 {
 
     public GameObject Armature;
-    public SkinnedMeshRenderer[] Mesh_Renderers;
+    public List<SkinnedMeshRenderer> Mesh_Renderers = new List<SkinnedMeshRenderer>();
 
     public Dictionary<string, Transform> boneMap = new Dictionary<string, Transform>();
+
+    private int meshNum = 0;
 
     [MenuItem("Cascadian/MeshTransferTool")]
 
@@ -41,9 +43,9 @@ class MeshTransferToolEditor : EditorWindow
             Transform tempBone = Mesh.bones[j];
             if (tempBone == null) { continue; }
             GameObject bone = tempBone.gameObject;
-            if (!boneMap.TryGetValue(bone.name, out newBonesList[j]))
+            if (!boneMap.TryGetValue(bone.name, out newBonesList[j])) // Check to see if bone exists in bone map
             {
-                if (boneMap.TryGetValue(bone.transform.parent.name, out Transform pBone))// try to find the parent reference in the target armature
+                if (boneMap.TryGetValue(bone.transform.parent.name, out Transform pBone)) // try to find the parent reference in the target armature
                 {
                     //add the new bones to the target armature
                     bone.transform.SetParent(pBone);
@@ -68,21 +70,41 @@ class MeshTransferToolEditor : EditorWindow
 
     public void OnGUI()
     {
-        GUILayout.Label("Remap Meshes", EditorStyles.boldLabel);
+        GUILayout.Label("Remap Meshes", EditorStyles.largeLabel);
 
         GUILayout.Space(10f);
 
         GUILayout.Label("Armature From Target Skeleton:", EditorStyles.boldLabel);
-        Armature = (GameObject)EditorGUILayout.ObjectField(Armature, typeof(GameObject), true);
+        Armature = (GameObject)EditorGUILayout.ObjectField(Armature, typeof(GameObject), true, GUILayout.Height(25f));
 
-        GUILayout.Space(10f);
+        GUILayout.Space(20f);
+        
+        { // Meshes
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.Label("Meshes to Transfer", EditorStyles.boldLabel);
+            GUIStyle customButton = new GUIStyle("button");
+            customButton.fontSize = 20;
 
-        ScriptableObject target = this;
-        SerializedObject so = new SerializedObject(target);
-        SerializedProperty bonesProperty = so.FindProperty("Mesh_Renderers");
+            if (GUILayout.Button("-", customButton, GUILayout.Width(25f), GUILayout.Height(25f)))
+            {
+                if (meshNum <= 0) {return;}
+                meshNum--;
+                Mesh_Renderers.RemoveAt(Mesh_Renderers.Count - 1);
+            }
 
-        GUILayout.Label("Meshes To Bind to Target Skeleton:", EditorStyles.boldLabel);
-        EditorGUILayout.PropertyField(bonesProperty, true);
+            if (GUILayout.Button("+", customButton, GUILayout.Width(25f), GUILayout.Height(25f)))
+            {
+                meshNum++;
+                Mesh_Renderers.Add(null);
+            }
+
+            EditorGUILayout.EndHorizontal();
+
+            for (int i = 0; i < meshNum; i++)
+            {
+                Mesh_Renderers[i] = (SkinnedMeshRenderer)EditorGUILayout.ObjectField(Mesh_Renderers[i], typeof(SkinnedMeshRenderer), true, GUILayout.Height(30f));
+            }
+        }
 
         GUILayout.Space(10f);
 
@@ -93,7 +115,7 @@ class MeshTransferToolEditor : EditorWindow
             {
                 GetBones(Armature.transform);
 
-                for (int i = 0; i < Mesh_Renderers.Length; i++)
+                for (int i = 0; i < Mesh_Renderers.Count; i++)
                 {
                     SkinnedMeshRenderer Mesh = Mesh_Renderers[i];
 
@@ -112,9 +134,6 @@ class MeshTransferToolEditor : EditorWindow
                 Debug.LogError("Please select the \"Armature\" of target skeleton.");
             }
         }
-
-        so.ApplyModifiedProperties();
-
     }
 }
 #endif
