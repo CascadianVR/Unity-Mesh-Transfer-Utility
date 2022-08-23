@@ -3,6 +3,11 @@
 **A Unity Editor utility that can transfer skinned mesh renderers from one armature to another.  
 This does not automatically weight anything, it just lets you use a mesh on a specified armature instead of only the one it was imported with.**
 
+# **Download**
+To download, go to the releases and download the .cs file and add it to your Unity project.
+
+https://github.com/CascadianWorks/Skinned-Mesh-Armature-Remapper/releases
+
 ***Some uses for this tool include:***
 - Adding meshes to an existing configured model
 - Replacing meshes to update instead of reimporting
@@ -43,10 +48,6 @@ https://img.youtube.com/vi/N2BVAn7m2y4/0.jpg)](https://www.youtube.com/watch?v=N
 
 ![image](https://user-images.githubusercontent.com/90723146/138570575-f82bccfa-2a1b-4766-8208-2723c2c29663.png)
 
-# **Download**
-To download, go to the releases and download the .cs file and add it to your Unity project.
-
-https://github.com/CascadianWorks/Skinned-Mesh-Armature-Remapper/releases
 
 # **Issues/Improvements to Be Done**
 - Take default humanoid bone names into account (So even if one is named Shoulder_L and other is LeftShoulder, it will still map)
