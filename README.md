@@ -22,7 +22,7 @@ https://user-images.githubusercontent.com/90723146/139330629-c4a3f25f-565b-4424-
 
 
 ### Youtube Walkthrough Tutorial:
-https://img.youtube.com/vi/N2BVAn7m2y4/0.jpg)](https://www.youtube.com/watch?v=N2BVAn7m2y4)
+[Youtube Link](https://www.youtube.com/watch?v=N2BVAn7m2y4)
 
 # How to Use
 **1. You can access the editor window by toing to the top toolbar and going to Tools/Cascadian/Skinned-Mesh-Armature-Remapper.**
