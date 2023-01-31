@@ -48,6 +48,12 @@ class MeshTransferToolEditor : EditorWindow
                 if (boneMap.TryGetValue(bone.transform.parent.name, out Transform pBone)) // try to find the parent reference in the target armature
                 {
                     //add the new bones to the target armature
+                    var components = bone.GetComponents(typeof(Component));
+                    foreach (var component in components)
+                    {
+                        //Debug.Log(component.GetComponent(component));
+                    }
+                    bone.transform.position += pBone.position - bone.transform.parent.position;
                     bone.transform.SetParent(pBone);
                     GetBones(pBone.transform);
                     boneMap.TryGetValue(bone.name, out newBonesList[j]);
