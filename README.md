@@ -8,7 +8,9 @@ This does not automatically weight anything, it just lets you use a mesh on a sp
 - Replacing meshes to update instead of reimporting
 - Refreshing every mesh on the model while maintinging original armature
 
-*(And more)* <p align="right">[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N06S00V)</p>
+*(And more)* <p align="right">
+[![](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/cascascas)
+</p>
 
 
 # **Download**
