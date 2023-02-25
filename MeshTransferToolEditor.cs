@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using System.Configuration;
-using System.Linq;
 
 #if UNITY_EDITOR
 class MeshTransferToolEditor : EditorWindow
