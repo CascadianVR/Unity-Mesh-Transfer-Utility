@@ -3,20 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.Configuration;
+using System.Linq;
 
 #if UNITY_EDITOR
 class MeshTransferToolEditor : EditorWindow
 {
 
-    public GameObject Armature;
-    public List<SkinnedMeshRenderer> Mesh_Renderers = new List<SkinnedMeshRenderer>();
+    public static GameObject Armature;
+    public static List<SkinnedMeshRenderer> Mesh_Renderers = new List<SkinnedMeshRenderer>();
 
-    public Dictionary<string, Transform> boneMap = new Dictionary<string, Transform>();
+    public static Dictionary<string, Transform> boneMap = new Dictionary<string, Transform>();
 
     private int meshNum = 0;
 
+    [MenuItem("GameObject/TransferMeshes", false, 0)]
+    public static void contextMenu(MenuCommand menuCommand)
+    {
+        Mesh_Renderers = new List<SkinnedMeshRenderer>();
+        foreach (var gameObject in Selection.gameObjects)
+        {
+            if (gameObject.GetComponent<SkinnedMeshRenderer>() == true)
+            {
+                Mesh_Renderers.Add(gameObject.GetComponent<SkinnedMeshRenderer>());
+                Debug.Log("MESH: " + gameObject.name);
+            }
+            else
+            {
+                Armature = gameObject.GetComponentsInChildren<Transform>()[1].gameObject;
+                Debug.Log("ROOT: " + Armature.name);
+            }
+        }
+        
+        MeshRemap();
+        
+    }
+    
     [MenuItem("Cascadian/MeshTransferTool")]
-
     static void Init()
     {
         // Get existing open window or if none, make a new one:
@@ -25,7 +47,7 @@ class MeshTransferToolEditor : EditorWindow
     }
     
     // Put in a map every bones until there is no more children
-    void GetBones(Transform pBone)
+    static void GetBones(Transform pBone)
     {
         foreach (Transform bone in pBone){
             if (bone.name.Equals("Armature")) { continue; } // skip sub-avatar in main avatar
@@ -35,7 +57,7 @@ class MeshTransferToolEditor : EditorWindow
     }
 
     //https://answers.unity.com/questions/44355/shared-skeleton-and-animation-state.html
-    void BoneRemap(SkinnedMeshRenderer Mesh)
+    static void BoneRemap(SkinnedMeshRenderer Mesh)
     {
         Transform[] newBonesList = new Transform[Mesh.bones.Length];
         for (int j = 0; j < Mesh.bones.Length; ++j)
@@ -68,7 +90,7 @@ class MeshTransferToolEditor : EditorWindow
         Mesh.bones = newBonesList;
     }
 
-    void TransferMeshes(SkinnedMeshRenderer Mesh)
+    static void TransferMeshes(SkinnedMeshRenderer Mesh)
     {
         Mesh.gameObject.transform.SetParent(Armature.gameObject.transform.parent);
         Mesh.rootBone = Armature.gameObject.transform.parent.gameObject.GetComponent<Animator>().GetBoneTransform(HumanBodyBones.Hips);
@@ -116,29 +138,42 @@ class MeshTransferToolEditor : EditorWindow
 
         if (GUILayout.Button("Remap Meshes"))
         {
-            if (Armature.gameObject.transform.parent.gameObject.GetComponent<Animator>() == null) { Debug.LogError("Base Armature not Humanoid. Please set rig type to humanoid to proceed."); }
-            if (Armature.name.Equals("Armature"))//the gameobject must be the armature of target avatar
-            {
-                GetBones(Armature.transform);
+            MeshRemap();
+        }
+    }
 
-                for (int i = 0; i < Mesh_Renderers.Count; i++)
+    private static void MeshRemap()
+    {
+        if (Armature.gameObject.transform.parent.gameObject.GetComponent<Animator>() == null)
+        {
+            Debug.LogError("Base Armature not Humanoid. Please set rig type to humanoid to proceed.");
+        }
+
+        if (Armature.name.Equals("Armature")) //the gameobject must be the armature of target avatar
+        {
+            GetBones(Armature.transform);
+
+            for (int i = 0; i < Mesh_Renderers.Count; i++)
+            {
+                SkinnedMeshRenderer Mesh = Mesh_Renderers[i];
+
+                if (Mesh == null)
                 {
-                    SkinnedMeshRenderer Mesh = Mesh_Renderers[i];
-
-                    if (Mesh == null) { continue; }
-                    if (PrefabUtility.GetPrefabInstanceStatus(Mesh.transform.parent.gameObject) == PrefabInstanceStatus.Connected) //unpack prefab to move mesh and bones to the target avatar
-                    {
-                        PrefabUtility.UnpackPrefabInstance(Mesh.transform.parent.gameObject, unpackMode: PrefabUnpackMode.Completely, action: InteractionMode.AutomatedAction);
-                    }
-
-                    BoneRemap(Mesh);
-                    TransferMeshes(Mesh);
+                    continue;
                 }
+
+                if (PrefabUtility.GetPrefabInstanceStatus(Mesh.transform.parent.gameObject) == PrefabInstanceStatus.Connected) //unpack prefab to move mesh and bones to the target avatar
+                {
+                    PrefabUtility.UnpackPrefabInstance(Mesh.transform.parent.gameObject, unpackMode: PrefabUnpackMode.Completely, action: InteractionMode.AutomatedAction);
+                }
+
+                BoneRemap(Mesh);
+                TransferMeshes(Mesh);
             }
-            else
-            {
-                Debug.LogError("Please select the \"Armature\" of target skeleton.");
-            }
+        }
+        else
+        {
+            Debug.LogError("Please select the \"Armature\" of target skeleton.");
         }
     }
 }
